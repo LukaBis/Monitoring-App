@@ -1,0 +1,5 @@
+FROM openjdk:17-alpine
+
+WORKDIR /api
+COPY . .
+ENTRYPOINT ["/bin/sh"]

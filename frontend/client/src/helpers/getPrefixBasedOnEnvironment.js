@@ -1,0 +1,1 @@
+export const urlPrefix = () => (process.env.REACT_APP_ENV === "development") ? "" : "/api";

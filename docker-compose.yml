@@ -1,0 +1,37 @@
+version: "3.5"
+
+services:
+    api:
+        build:
+            context: "./backend"
+            dockerfile: "Dockerfile.dev"
+        tty: true
+        stdin_open: true
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./backend:/api
+        networks:
+            monitoring-network:
+                ipv4_address: 10.5.0.5
+    frontend:
+        build:
+          context: "./frontend/client"
+          dockerfile: "Dockerfile.dev"
+        tty: true
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./frontend/client/src:/app/src
+            - ./frontend/client/public:/app/public
+            - ./frontend/client/build:/app/build
+            - ./frontend/client:/app
+        networks:
+            - monitoring-network
+networks:
+    monitoring-network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 10.5.0.0/16
+                  gateway: 10.5.0.1

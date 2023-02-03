@@ -1,0 +1,14 @@
+.messages-table {
+    margin-top: 6rem;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 2rem;
+}
+
+.filter-icon {
+    cursor: pointer;
+}
+
+.min-width-cell {
+    min-width: 200px;
+}
